@@ -1,0 +1,272 @@
+[
+    {
+        "id": "T001",
+        "type": "Standard",
+        "ticket_text": "I received my order yesterday but I don't want it anymore. How do I return it?",
+        "order_context": {
+            "order_date": "2026-03-20",
+            "delivery_date": "2026-03-27",
+            "item_category": "Apparel",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Texas",
+            "order_status": "delivered",
+            "payment_method": "Credit Card"
+        }
+    },
+    {
+        "id": "T002",
+        "type": "Standard",
+        "ticket_text": "My laptop arrived with a shattered screen. I want a refund.",
+        "order_context": {
+            "order_date": "2026-03-22",
+            "delivery_date": "2026-03-26",
+            "item_category": "Electronics",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Florida",
+            "order_status": "delivered"
+        }
+    },
+    {
+        "id": "T003",
+        "type": "Standard",
+        "ticket_text": "I meant to use the code WELCOME10 but I hit submit too quickly! Can you add it?",
+        "order_context": {
+            "order_date": "2026-03-28",
+            "delivery_date": null,
+            "item_category": "Home",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Ohio",
+            "order_status": "placed"
+        }
+    },
+    {
+        "id": "T004",
+        "type": "Standard",
+        "ticket_text": "Cancel my order please, I bought it by mistake.",
+        "order_context": {
+            "order_date": "2026-03-28",
+            "delivery_date": null,
+            "item_category": "Books",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Nevada",
+            "order_status": "placed"
+        }
+    },
+    {
+        "id": "T005",
+        "type": "Standard",
+        "ticket_text": "Tracking says delivered but there's no package here! It said delivered 3 days ago.",
+        "order_context": {
+            "order_date": "2026-03-15",
+            "delivery_date": "2026-03-25",
+            "item_category": "Toys",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Georgia",
+            "order_status": "delivered"
+        }
+    },
+    {
+        "id": "T006",
+        "type": "Standard",
+        "ticket_text": "I ordered 3 books but only 2 were in the box.",
+        "order_context": {
+            "order_date": "2026-03-22",
+            "delivery_date": "2026-03-26",
+            "item_category": "Books",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Oregon",
+            "order_status": "delivered"
+        }
+    },
+    {
+        "id": "T007",
+        "type": "Standard",
+        "ticket_text": "Can I exchange this shirt for a medium?",
+        "order_context": {
+            "order_date": "2026-03-10",
+            "delivery_date": "2026-03-15",
+            "item_category": "Apparel",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Utah",
+            "order_status": "delivered"
+        }
+    },
+    {
+        "id": "T008",
+        "type": "Standard",
+        "ticket_text": "I got the wrong color mug. I ordered blue but got red.",
+        "order_context": {
+            "order_date": "2026-03-20",
+            "delivery_date": "2026-03-25",
+            "item_category": "Home",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Michigan",
+            "order_status": "delivered"
+        }
+    },
+    {
+        "id": "T009",
+        "type": "Exception",
+        "ticket_text": "The bouquet of roses I ordered arrived completely withered. I want a refund right now. Attached are photos.",
+        "order_context": {
+            "order_date": "2026-03-25",
+            "delivery_date": "2026-03-27",
+            "item_category": "Perishable",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Virginia",
+            "order_status": "delivered"
+        }
+    },
+    {
+        "id": "T010",
+        "type": "Exception",
+        "ticket_text": "I bought this jacket on clearance marked final sale, but it doesn't fit my husband.",
+        "order_context": {
+            "order_date": "2026-03-15",
+            "delivery_date": "2026-03-22",
+            "item_category": "Apparel",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Arizona",
+            "order_status": "delivered",
+            "item_tags": [
+                "Final Sale"
+            ]
+        }
+    },
+    {
+        "id": "T011",
+        "type": "Exception",
+        "ticket_text": "The swimwear I bought doesn't fit correctly. I tried it on yesterday.",
+        "order_context": {
+            "order_date": "2026-03-15",
+            "delivery_date": "2026-03-22",
+            "item_category": "Apparel",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Colorado",
+            "order_status": "delivered"
+        }
+    },
+    {
+        "id": "T012",
+        "type": "Exception",
+        "ticket_text": "Can I cancel my custom engraved watch? It hasn't shipped yet so it should be fine.",
+        "order_context": {
+            "order_date": "2026-03-26",
+            "delivery_date": null,
+            "item_category": "Accessories",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Montana",
+            "order_status": "placed",
+            "item_tags": [
+                "Personalized"
+            ]
+        }
+    },
+    {
+        "id": "T013",
+        "type": "Exception",
+        "ticket_text": "I need to return this camera I bought 45 days ago.",
+        "order_context": {
+            "order_date": "2026-02-05",
+            "delivery_date": "2026-02-10",
+            "item_category": "Electronics",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Washington",
+            "order_status": "delivered"
+        }
+    },
+    {
+        "id": "T014",
+        "type": "Exception",
+        "ticket_text": "You guys are totally incompetent. The shipping took 6 days instead of 5. Cancel the order now though it shipped yesterday.",
+        "order_context": {
+            "order_date": "2026-03-20",
+            "delivery_date": null,
+            "item_category": "Home",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Idaho",
+            "order_status": "shipped"
+        }
+    },
+    {
+        "id": "T015",
+        "type": "Conflict",
+        "ticket_text": "I bought this clearance dress marked Final Sale, but I live in London so I can return it anyway within 14 days under right to cancel.",
+        "order_context": {
+            "order_date": "2026-03-15",
+            "delivery_date": "2026-03-20",
+            "item_category": "Apparel",
+            "fulfillment_type": "first-party",
+            "shipping_region": "UK",
+            "order_status": "delivered",
+            "item_tags": [
+                "Final Sale"
+            ]
+        }
+    },
+    {
+        "id": "T016",
+        "type": "Conflict",
+        "ticket_text": "I want to return this defective phone. I bought it 50 days ago. I know standard policy is 30 days but California law protects me.",
+        "order_context": {
+            "order_date": "2026-01-20",
+            "delivery_date": "2026-01-25",
+            "item_category": "Electronics",
+            "fulfillment_type": "first-party",
+            "shipping_region": "California",
+            "order_status": "delivered"
+        }
+    },
+    {
+        "id": "T017",
+        "type": "Conflict",
+        "ticket_text": "I want a refund for the blender I bought. The seller won't answer me.",
+        "order_context": {
+            "order_date": "2026-03-01",
+            "delivery_date": "2026-03-05",
+            "item_category": "Home",
+            "fulfillment_type": "marketplace seller",
+            "shipping_region": "Iowa",
+            "order_status": "delivered"
+        }
+    },
+    {
+        "id": "T018",
+        "type": "Not-in-Policy",
+        "ticket_text": "I tripped over the box you delivered and broke my ankle. I am contacting my lawyer unless you give me $5,000.",
+        "order_context": {
+            "order_date": "2026-03-20",
+            "delivery_date": "2026-03-25",
+            "item_category": "Home",
+            "fulfillment_type": "first-party",
+            "shipping_region": "New York",
+            "order_status": "delivered"
+        }
+    },
+    {
+        "id": "T019",
+        "type": "Not-in-Policy",
+        "ticket_text": "The delivery guy looked at me weird. I feel uncomfortable and want a $100 apology credit.",
+        "order_context": {
+            "order_date": "2026-03-20",
+            "delivery_date": "2026-03-22",
+            "item_category": "Apparel",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Texas",
+            "order_status": "delivered"
+        }
+    },
+    {
+        "id": "T020",
+        "type": "Ambiguous",
+        "ticket_text": "I want a refund.",
+        "order_context": {
+            "order_date": "2026-03-10",
+            "delivery_date": "2026-03-15",
+            "item_category": "Unknown",
+            "fulfillment_type": "first-party",
+            "shipping_region": "Unknown",
+            "order_status": "delivered"
+        }
+    }
+]
