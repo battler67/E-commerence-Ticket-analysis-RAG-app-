@@ -5,7 +5,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 
-def get_chroma_vectorstore(persist_directory="chroma_db", policies_dir="data/policies"):
+def get_chroma_vectorstore(persist_directory="chroma_db_v2", policies_dir="data/policies"):
     embeddings = OpenAIEmbeddings()
     
     if os.path.exists(persist_directory) and os.listdir(persist_directory):

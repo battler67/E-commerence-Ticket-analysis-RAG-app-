@@ -12,6 +12,7 @@ class PolicyQuery(BaseModel):
     queries: List[str] = Field(description="List of targeted search queries to fetch relevant policies")
 
 class ResolutionDraftOutput(BaseModel):
+    conflicts_considered: str = Field(description="Explicit list and explanation of any policies that conflicted during evaluation (e.g. Regional vs Standard). If none, state 'None'.")
     decision: str = Field(description="Decision made: approve, deny, partial, or needs escalation")
     rationale: str = Field(description="Policy-based rationale for the decision")
     customer_response: str = Field(description="Customer-ready message addressing the issue")
@@ -33,6 +34,7 @@ class AgentState(TypedDict):
     # Populated by Retriever
     citations: List[dict]
     # Populated by Resolution Writer
+    conflicts_considered: str
     decision: str
     rationale: str
     customer_response: str
@@ -44,3 +46,5 @@ class AgentState(TypedDict):
     escalation_reason: str
     # Loop counters
     rewrite_count: int
+    clarification_count: int
+    chat_history: list[dict]

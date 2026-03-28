@@ -5,6 +5,8 @@ from src.agents import triage_node, retriever_node, writer_node, compliance_node
 def route_triage(state: AgentState):
     # If the triage node found that clarifying questions are needed, or if confidence is very low.
     if state.get("clarifying_questions") and len(state["clarifying_questions"]) > 0:
+        if state.get("clarification_count", 0) >= 3:
+            return "retrieve_policies"
         return "needs_clarification"
     return "retrieve_policies"
 

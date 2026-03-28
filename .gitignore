@@ -1,0 +1,39 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database
+chroma_db/
+chroma_db_v2/
+*.sqlite3
+
+# VS Code (Optional, uncomment if you want to ignore VS Code settings)
+# .vscode/
+# !.vscode/settings.json
+
+# Caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+# data/ (uncomment if you don't want to track data files)

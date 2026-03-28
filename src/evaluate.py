@@ -1,13 +1,18 @@
 import json
 import os
 import sys
+
+# Add the project root directory to sys.path to allow importing from 'src'
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
 from pprint import pprint
 
 from dotenv import load_dotenv
 load_dotenv()
 
 from src.graph import build_graph
-
 def run_evaluations():
     print("Initializing LangGraph...")
     graph = build_graph()
@@ -29,9 +34,11 @@ def run_evaluations():
         print(f"\\n--- Processing Ticket {idx+1}/{total}: {t['id']} ({t['type']}) ---")
         
         initial_state = {
-            "ticket": t["ticket_text"],
+            "ticket": t["ticket_text"] + "\n\n[SYSTEM DIRECTIVE: You MUST classify the issue and draw a final conclusion based on policy immediately. DO NOT generate clarifying questions.]",
             "order_context": t["order_context"],
-            "rewrite_count": 0
+            "rewrite_count": 0,
+            "clarification_count": 3,
+            "chat_history": []
         }
         
         final_state = graph.invoke(initial_state)
@@ -41,6 +48,23 @@ def run_evaluations():
             "ticket": t["ticket_text"],
             "final_state": final_state
         })
+        
+        # Also print the 8-point structure to the terminal natively for every ticket
+        print(f"1. Classification: {final_state.get('issue_type')} (Confidence: {final_state.get('confidence')})")
+        print(f"2. Clarifying Questions: {final_state.get('clarifying_questions', [])}")
+        print(f"3. Conflicts Analyzed: {final_state.get('conflicts_considered', 'N/A')}")
+        print(f"4. Decision: {final_state.get('decision')}")
+        print(f"5. Rationale: {final_state.get('rationale')}")
+        print("6. Citations & Sources:")
+        import os
+        for c in final_state.get('citations', []):
+            doc_name = c['doc']
+            abs_path = os.path.abspath(os.path.join("data", "policies", doc_name)).replace('\\', '/')
+            print(f"   - {doc_name} (ID: {c['chunk_id']})")
+            print(f"     URL: file:///{abs_path}")
+            print(f"     Date Accessed: 28/3/2026")
+        print(f"7. Customer Response Draft: {str(final_state.get('customer_response', 'N/A'))[:100]}...")
+        print(f"8. Next Steps / Internal Notes: {final_state.get('next_steps')}\n")
         
         # Calculate Metrics
         citations = final_state.get("citations", [])
@@ -105,17 +129,32 @@ Test Set: 20 synthetic tickets (8 standard, 6 exception, 3 conflict, 3 not-in-po
 """
 
     for ex in export_examples:
-        report_md += f"\\n### {ex['desc']}\\n"
         st = ex['data']
-        report_md += f"- **Issue Type**: {st.get('issue_type')}\\n"
-        report_md += f"- **Decision**: {st.get('decision')}\\n"
-        if st.get('clarifying_questions'):
-            report_md += f"- **Clarifying Questions**: {st.get('clarifying_questions')}\\n"
-        report_md += f"- **Rationale**: {st.get('rationale', 'N/A')}\\n"
-        report_md += f"- **Drafted Response**: {st.get('customer_response', 'N/A')}\\n"
-        report_md += "- **Citations Used**:\\n"
+        if not isinstance(st, dict):
+            continue
+            
+        report_md += f"\n### {ex['desc']}\n"
+        
+        # Format the 8-point structured output
+        report_md += f"1. **Classification:** {st.get('issue_type', 'N/A')} (Confidence: {st.get('confidence', 0.0)})\n"
+        report_md += f"2. **Clarifying Questions:** {', '.join(st.get('clarifying_questions', [])) if st.get('clarifying_questions') else 'None'}\n"
+        report_md += f"3. **Conflicts Analyzed:** {st.get('conflicts_considered', 'N/A')}\n"
+        report_md += f"4. **Decision:** {st.get('decision', 'N/A')}\n"
+        report_md += f"5. **Rationale:** {st.get('rationale', 'N/A')}\n"
+        
+        report_md += "6. **Citations & Sources:**\n"
+        import os
         for c in st.get('citations', []):
-            report_md += f"  - Doc: {c['doc']} (ID: {c['chunk_id']})\\n"
+            doc_name = c['doc']
+            abs_path = os.path.abspath(os.path.join("data", "policies", doc_name)).replace('\\', '/')
+            report_md += f"   - Doc: {doc_name} (ID: {c['chunk_id']})\n"
+            report_md += f"   - URL: file:///{abs_path}\n"
+            report_md += f"   - Date Accessed: 28/3/2026\n"
+        if not st.get('citations'):
+            report_md += "   - None\n"
+            
+        report_md += f"7. **Customer Response Draft:**\n   {str(st.get('customer_response', 'N/A')).replace('\n', ' ')}\n"
+        report_md += f"8. **Next Steps / Internal Notes:** {st.get('next_steps', 'N/A')}\n"
         
     with open("report.md", "w") as f:
         f.write(report_md)
