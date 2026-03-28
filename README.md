@@ -1,6 +1,13 @@
 # E-Commerce Support Ticket Analysis RAG Agent
 
+
 This project is a multi-agent retrieval-augmented generation (RAG) system built with **LangGraph**, **LangChain**, and **ChromaDB**. It autonomously resolves customer support tickets based exclusively on corporate policy, with strict guardrails against LLM hallucinations.
+
+<p align="center">
+  <a href="[https://www.youtube.com/watch?v=ndheRcY9i64](https://www.youtube.com/watch?v=MISOjLwmuV4)">
+    <img src="https://img.youtube.com/vi/ndheRcY9i64/maxresdefault.jpg" width="700">
+  </a>
+</p>
 
 ## Architecture
 The system employs a 4-Agent architecture mapping to the LangGraph state machine:
